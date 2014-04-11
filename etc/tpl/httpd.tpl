@@ -8,33 +8,43 @@ Group {{settings.group}}
 DocumentRoot "{{DOCUMENT_ROOT}}"
 AccessFileName .htaccess
 
+LoadModule php5_module libexec/apache2/libphp5.so
+
+<IfModule php5_module>
+	AddType application/x-httpd-php .php
+	AddType application/x-httpd-php-source .phps
+	<IfModule dir_module>
+		DirectoryIndex index.html index.php
+	</IfModule>
+</IfModule>
+
 <Directory />
-    Options FollowSymLinks
-    AllowOverride All
-    Order deny,allow
-    Deny from all
+	Options FollowSymLinks
+	AllowOverride All
+	Order deny,allow
+	Deny from all
 </Directory>
 
 <Directory "{{DOCUMENT_ROOT}}">
-    Options Indexes FollowSymLinks MultiViews
-    AllowOverride All
-    Order allow,deny
-    Allow from all
+	Options Indexes FollowSymLinks MultiViews
+	AllowOverride All
+	Order allow,deny
+	Allow from all
 </Directory>
 
 <IfModule alias_module>
-    {{for alias in ALIASES}}
-        AliasMatch ^.*/\{{alias.prefix}}(.*) {{alias.path}}$1
-    {{/for}}
+	{{for alias in ALIASES}}
+		AliasMatch ^.*/\{{alias.prefix}}(.*) {{alias.path}}$1
+	{{/for}}
 </IfModule>
 
 {{for alias in ALIASES}}
-    <Directory "{{alias.path}}">
-        Options Indexes FollowSymLinks MultiViews
-        AllowOverride None
-        Order allow,deny
-        Allow from all
-    </Directory>
+	<Directory "{{alias.path}}">
+		Options Indexes FollowSymLinks MultiViews
+		AllowOverride None
+		Order allow,deny
+		Allow from all
+	</Directory>
 {{/for}}
 
 NameVirtualHost *:{{port}}
