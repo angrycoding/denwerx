@@ -3,12 +3,12 @@ DenwerX
 
 Set of scripts that allows you to enjoy so called "virtual hosts" or "named hosts" without installing any additional software.
 
-* uses standard Apache which is installed in every OSX by default (so it won't install you another one, like most of the similar solutions does)
+* uses standard Apache and PHP5 which is installed in every OSX by default (so it won't install you another one, like most of the similar solutions does)
 * doesn't modify standard Apache installation or config files, it just transparently works on top of it
 * allows you to use named hosts, so instead of `http://localhost/my-project/www/index.html` you can simply use `http://my-project/` (I recomend you to create such hosts with ".loc" postfix to avoid possible confusion)
 * minimal possible installation, no installers, no dmg's, you just manually copy files wherever you need and it just lives there
 * elegant (MacOS way) of starting and stopping it, using AppleScript
-* distribution **doesn't include PHP or MySQL**, so do it yourself if you need it
+* distribution **doesn't include MySQL**, so do it yourself if you need it
 
 ## Installation
 
