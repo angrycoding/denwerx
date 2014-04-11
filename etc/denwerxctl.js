@@ -278,8 +278,8 @@ function updateConfig(ret) {
 function updateShellScript(ret) {
 	reportStatus('updating shell script...');
 	getLocation('node', function(nodePath) {
-		var shellScriptPath = Path.resolve(__dirname, 'runner.sh');
-		renderTemplateToFile('runner.tpl', shellScriptPath, function() {
+		var shellScriptPath = Path.resolve(__dirname, 'denwerxctl.sh');
+		renderTemplateToFile('denwerxctl.tpl', shellScriptPath, function() {
 			reportStatus('create shell script', shellScriptPath);
 			reportStatus('checking shell script permissions...');
 			FS.stat(shellScriptPath, function(error, stats) {
