@@ -235,7 +235,17 @@ function updateHosts(settings, ret) {
 		renderTemplates([
 			{file: HTTPD_CONF_FILE, tpl: Path.resolve(__dirname, 'tpl/httpd.tpl')},
 			{file: settings.hostsFile, tpl: Path.resolve(__dirname, 'tpl/hosts.tpl')}
-		], ret, {DOCUMENT_ROOT: DOCUMENT_ROOT, settings: settings, hosts: hosts});
+		], ret, {
+			hosts: hosts,
+			settings: settings,
+			DOCUMENT_ROOT: DOCUMENT_ROOT,
+			ALIASES: (settings.aliases || {}).map(function(alias) {
+				return {
+					prefix: alias.prefix,
+					path: Path.resolve(__dirname, alias.path)
+				};
+			}),
+		});
 	});
 }
 

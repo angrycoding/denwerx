@@ -1,7 +1,6 @@
 # AUTO-GENERATED FILE, DO NOT MODIFY
 
 {{var port = settings.listen}}
-{{var aliases = settings.aliases}}
 
 Listen {{port}}
 User {{settings.user}}
@@ -24,12 +23,12 @@ AccessFileName .htaccess
 </Directory>
 
 <IfModule alias_module>
-    {{for alias in settings.aliases}}
+    {{for alias in ALIASES}}
         AliasMatch ^.*/\{{alias.prefix}}(.*) {{alias.path}}$1
     {{/for}}
 </IfModule>
 
-{{for alias in settings.aliases}}
+{{for alias in ALIASES}}
     <Directory "{{alias.path}}">
         Options Indexes FollowSymLinks MultiViews
         AllowOverride None
