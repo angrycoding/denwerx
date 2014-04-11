@@ -1,3 +1,5 @@
+# AUTO-GENERATED FILE, DO NOT MODIFY
+
 {{var port = settings.listen}}
 {{var aliases = settings.aliases}}
 
