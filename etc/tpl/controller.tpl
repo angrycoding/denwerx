@@ -1,1 +1,1 @@
-do shell script "{{shellScriptPath}} {{action}}"
+do shell script "sudo {{shellScriptPath}} {{action}}"
